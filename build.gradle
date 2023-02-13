@@ -1,0 +1,27 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.8'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.projectlombok:lombok:1.18.22'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test' // средства тестирования
+	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.24' // lombok работает только во время компмиляции, а не выполнения
+	annotationProcessor 'org.projectlombok:lombok:1.18.24' // фикс ошибки "variable not initialized on the default constructor"
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
