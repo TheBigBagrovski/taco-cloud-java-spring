@@ -7,9 +7,9 @@ public class Ingredient {
 
     private final String id;
     private final String name;
-    private final Type type;
+    private final Category category;
 
-    public enum Type {
+    public enum Category {
         WRAP, PROTEIN, VEGGIES, SAUCE, CHEESE
     }
 

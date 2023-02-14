@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    generate-unique-name: false
+    name: tacocloud #URL: jdbc:h2:mem:tacocloud
+  h2:
+    console:
+      enabled: true
