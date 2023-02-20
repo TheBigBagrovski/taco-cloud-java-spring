@@ -1,13 +1,23 @@
 package com.example.tacos;
 
-import lombok.Data;
+import lombok.*;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@SuppressWarnings("JpaObjectClassSignatureInspection")
 @Data
-public class Ingredient {
+// @Table jdbc
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+//@RequiredArgsConstructor
+public class Ingredient /*implements Persistable*/ {
 
-    private final String id;
-    private final String name;
-    private final Category category;
+    @Id
+    private String id;
+    private String name;
+    private Category category;
 
     public enum Category {
         WRAP, PROTEIN, VEGGIES, SAUCE, CHEESE

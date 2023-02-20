@@ -9,6 +9,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,10 +28,12 @@ public class DesignTacoController {
 
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
-        List<Ingredient> ingredients = ingredientRepo.findAll();
-        Ingredient.Category[] categories = Ingredient.Category.values();
+        Category[] categories = Category.values();
+        List<Ingredient> ingredients = new ArrayList<>();
+        ingredientRepo.findAll().forEach(ingredients::add);
         for (Category category : categories) {
-            model.addAttribute(category.toString().toLowerCase(), filterByType(ingredients, category));
+            model.addAttribute(category.toString().toLowerCase(),
+                    ingredients.stream().filter(x -> x.getCategory().equals(category)).collect(Collectors.toList()));
         }
     }
 
@@ -78,10 +81,5 @@ public class DesignTacoController {
         log.info("Processing taco: {}", taco); // Logger
         return "redirect:/orders/current";
     }
-
-    private Iterable<Ingredient> filterByType(List<Ingredient> ingredients, Ingredient.Category category) {
-        return ingredients.stream().filter(x -> x.getCategory().equals(category)).collect(Collectors.toList());
-    }
-
 
 }
