@@ -2,6 +2,7 @@ package com.example.tacos.models;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
+import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -15,6 +16,7 @@ public class TacoOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Id
     private long id;
 
     private Date placedAt;
