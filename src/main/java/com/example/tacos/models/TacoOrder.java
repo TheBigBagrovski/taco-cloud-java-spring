@@ -2,8 +2,8 @@ package com.example.tacos.models;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
-import org.springframework.data.annotation.Id;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
@@ -12,12 +12,14 @@ import java.util.Date;
 import java.util.List;
 
 @Data
+@Entity
 public class TacoOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    private long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     private Date placedAt;
 
@@ -46,6 +48,7 @@ public class TacoOrder implements Serializable {
     @Pattern(regexp = "^[0-9]{3,4}$", message = "Invalid CVV") // @Digits не проверяет на минимальное число цифр
     private String ccCVV;
 
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Taco> tacos = new ArrayList<>();
 
     public void addTaco(Taco taco) {
