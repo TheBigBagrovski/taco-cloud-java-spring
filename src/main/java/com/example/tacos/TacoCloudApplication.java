@@ -2,9 +2,8 @@ package com.example.tacos;
 
 import com.example.tacos.data.IngredientRepository;
 import com.example.tacos.models.Ingredient;
-import com.example.tacos.models.Ingredient.*;
+import com.example.tacos.models.Ingredient.Category;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +20,7 @@ public class TacoCloudApplication implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("home");
+        registry.addViewController("/login");
     }
 
     @Bean

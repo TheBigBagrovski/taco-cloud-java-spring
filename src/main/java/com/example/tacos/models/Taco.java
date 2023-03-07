@@ -27,8 +27,8 @@ public class Taco {
     @ManyToMany
     private List<Ingredient> ingredients;
 
-    public void addIngredient(Ingredient ingredient) {
-        this.ingredients.add(ingredient);
-    }
+//    public void addIngredient(Ingredient ingredient) {
+//        this.ingredients.add(ingredient);
+//    }
 
 }
