@@ -35,3 +35,33 @@ out/
 
 ### VS Code ###
 .vscode/
+
+.idea/
+
+/out
+
+/target
+
+/bin
+
+*.iml
+
+/node_modules
+
+/packages
+
+*.o
+
+*.pyc
+
+*.class
+
+*.log
+
+*.lock
+
+*.tmp
+
+*.DS_Store
+
+Thumbs.db
