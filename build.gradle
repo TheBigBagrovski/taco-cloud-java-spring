@@ -17,6 +17,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools' // devtools, не нужны при комплияции и работе
 	testImplementation 'org.springframework.boot:spring-boot-starter-test' // средства тестирования
+	implementation 'org.projectlombok:lombok:1.18.22'
+	annotationProcessor 'org.projectlombok:lombok:1.18.24' // фикс ошибки "variable not initialized on the default constructor"
+	implementation 'org.springframework.boot:spring-boot-starter-validation' // средства валидации JSR 303
 }
 
 tasks.named('test') {
