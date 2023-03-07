@@ -1,4 +1,4 @@
-package com.example.tacos;
+package com.example.tacos.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -12,6 +12,7 @@ public class WebConfig implements WebMvcConfigurer {
         // определяет путь в запросах GET по указанному адресу, которые будет обрабатывать этот контроллер
         registry.addViewController("/").setViewName("home"); // заменяет весь класс HomeController
         // метод возвращает объект ViewControllerRegistration для которого мы вызываем setViewname(), указывая имя представления (файл хтмл) которому должны передаваться запросы "/"
+        registry.addViewController("/login");
     }
 
 }

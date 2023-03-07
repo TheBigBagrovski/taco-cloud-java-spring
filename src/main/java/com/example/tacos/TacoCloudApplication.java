@@ -1,6 +1,8 @@
 package com.example.tacos;
 
-import com.example.tacos.Ingredient.Category;
+import com.example.tacos.jpa.IngredientRepository;
+import com.example.tacos.models.Ingredient;
+import com.example.tacos.models.Ingredient.Category;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

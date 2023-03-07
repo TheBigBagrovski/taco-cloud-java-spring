@@ -1,5 +1,7 @@
-package com.example.tacos;
+package com.example.tacos.utils;
 
+import com.example.tacos.jpa.IngredientRepository;
+import com.example.tacos.models.Ingredient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;

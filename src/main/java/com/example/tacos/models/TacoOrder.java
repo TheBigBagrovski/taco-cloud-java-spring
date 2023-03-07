@@ -1,4 +1,4 @@
-package com.example.tacos;
+package com.example.tacos.models;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;

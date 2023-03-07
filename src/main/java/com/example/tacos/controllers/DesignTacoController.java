@@ -1,6 +1,10 @@
-package com.example.tacos;
+package com.example.tacos.controllers;
 
-import com.example.tacos.Ingredient.Category;
+import com.example.tacos.jpa.IngredientRepository;
+import com.example.tacos.models.Ingredient;
+import com.example.tacos.models.Ingredient.Category;
+import com.example.tacos.models.Taco;
+import com.example.tacos.models.TacoOrder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

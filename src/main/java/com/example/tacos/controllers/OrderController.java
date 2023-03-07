@@ -1,5 +1,7 @@
-package com.example.tacos;
+package com.example.tacos.controllers;
 
+import com.example.tacos.jpa.OrderRepository;
+import com.example.tacos.models.TacoOrder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;

@@ -1,9 +1,7 @@
-package com.example.tacos;
+package com.example.tacos.jpa;
 
+import com.example.tacos.models.Ingredient;
 import org.springframework.data.repository.CrudRepository;
-
-import java.util.List;
-import java.util.Optional;
 
 public interface IngredientRepository extends CrudRepository<Ingredient, String> {
 
