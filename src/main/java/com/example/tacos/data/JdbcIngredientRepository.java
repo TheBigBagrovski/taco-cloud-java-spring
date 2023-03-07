@@ -1,4 +1,4 @@
-package com.example.tacos.repositories;
+package com.example.tacos.data;
 
 
 import com.example.tacos.models.Ingredient.Category;

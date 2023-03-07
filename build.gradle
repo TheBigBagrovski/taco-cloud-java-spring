@@ -20,6 +20,8 @@ dependencies {
 	implementation 'org.projectlombok:lombok:1.18.22'
 	annotationProcessor 'org.projectlombok:lombok:1.18.24' // фикс ошибки "variable not initialized on the default constructor"
 	implementation 'org.springframework.boot:spring-boot-starter-validation' // средства валидации JSR 303
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'// JDBC
+	runtimeOnly 'com.h2database:h2'                                      // СУБД H2
 }
 
 tasks.named('test') {

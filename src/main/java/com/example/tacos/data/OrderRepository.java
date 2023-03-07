@@ -1,4 +1,9 @@
-package com.example.tacos.repositories;
+package com.example.tacos.data;
 
-public class OrderRepository {
+import com.example.tacos.models.TacoOrder;
+
+public interface OrderRepository {
+
+    TacoOrder save(TacoOrder order);
+
 }

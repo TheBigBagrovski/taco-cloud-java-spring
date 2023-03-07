@@ -1,1 +1,11 @@
-spring.thymeleaf.cache=false
+spring:
+  datasource:
+    generate-unique-name: false
+    username: root
+    password: root
+    name: tacocloud #URL: jdbc:h2:mem:tacocloud
+  h2:
+    console:
+      enabled: true
+  thymeleaf:
+    cache: false
