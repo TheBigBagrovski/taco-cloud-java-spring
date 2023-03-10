@@ -1,19 +1,12 @@
 spring:
   datasource:
     generate-unique-name: false
-    username: root
+    username: postgres
     password: root
-    name: tacocloud #URL: jdbc:h2:mem:tacocloud
-  h2:
-    console:
-      enabled: true
+    name: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
   thymeleaf:
     cache: false
-#  security:
-#    oauth2:
-#      client:
-#        registration:
-#          facebook:
-#            clientId: <facebook client id> // нужна учетная запись приложения в facebook
-#            clientSecret: <facebook client secret>
-#            scope: email, public_profile
+  jpa:
+    hibernate:
+      ddl-auto: update

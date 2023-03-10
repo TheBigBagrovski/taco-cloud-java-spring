@@ -1,9 +1,10 @@
 package com.example.tacos.controllers;
 
-import com.example.tacos.data.OrderRepository;
-import com.example.tacos.models.TacoOrder;
-import com.example.tacos.models.User;
+import com.example.tacos.models.Client;
+import com.example.tacos.models.Order;
+import com.example.tacos.services.OrderService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
@@ -22,10 +23,11 @@ import javax.validation.Valid;
 @SessionAttributes("tacoOrder")
 public class OrderController {
 
-    private final OrderRepository orderRepository;
+    private final OrderService orderService;
 
-    public OrderController(OrderRepository orderRepository) {
-        this.orderRepository = orderRepository;
+    @Autowired
+    public OrderController(OrderService orderService) {
+        this.orderService = orderService;
     }
 
     @GetMapping("/current")
@@ -34,10 +36,10 @@ public class OrderController {
     }
 
     @PostMapping
-    public String processOrder(@Valid TacoOrder order, Errors errors, SessionStatus sessionStatus, @AuthenticationPrincipal User user) {
+    public String processOrder(@Valid Order order, Errors errors, SessionStatus sessionStatus, @AuthenticationPrincipal Client client) {
         if (errors.hasErrors()) return "order";
-        order.setUser(user);
-        orderRepository.save(order);
+        order.setClient(client);
+        orderService.save(order);
         log.info("Order submitted: {}", order);
         sessionStatus.setComplete();
         return "redirect:/";

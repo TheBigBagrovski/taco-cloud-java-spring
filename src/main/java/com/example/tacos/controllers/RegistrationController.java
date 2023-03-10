@@ -1,23 +1,29 @@
 package com.example.tacos.controllers;
 
-import com.example.tacos.config.RegistrationForm;
-import com.example.tacos.data.UserRepository;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import com.example.tacos.models.Client;
+import com.example.tacos.services.RegistrationService;
+import com.example.tacos.utils.ClientValidator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/register")
 public class RegistrationController {
 
-    private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+    private final RegistrationService registrationService;
+    private final ClientValidator clientValidator;
 
-    public RegistrationController(UserRepository userRepository, PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
+    @Autowired
+    public RegistrationController(RegistrationService registrationService, ClientValidator clientValidator) {
+        this.registrationService = registrationService;
+        this.clientValidator = clientValidator;
     }
 
     @GetMapping
@@ -26,8 +32,10 @@ public class RegistrationController {
     }
 
     @PostMapping
-    public String processRegistration(RegistrationForm form) {
-        userRepository.save(form.toUser(passwordEncoder));
+    public String processRegistration(@ModelAttribute("client") @Valid Client client, BindingResult bindingResult) {
+        clientValidator.validate(client, bindingResult);
+        if(bindingResult.hasErrors()) return "registration";
+        registrationService.register(client);
         return "redirect:/login";
     }
 

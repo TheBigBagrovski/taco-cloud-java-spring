@@ -10,11 +10,12 @@ import java.util.List;
 
 @Data
 @Entity
+@Table
 public class Taco {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private Date createdAt = new Date();
 
@@ -27,8 +28,8 @@ public class Taco {
     @ManyToMany
     private List<Ingredient> ingredients;
 
-//    public void addIngredient(Ingredient ingredient) {
-//        this.ingredients.add(ingredient);
-//    }
+    public void addIngredient(Ingredient ingredient) {
+        this.ingredients.add(ingredient);
+    }
 
 }

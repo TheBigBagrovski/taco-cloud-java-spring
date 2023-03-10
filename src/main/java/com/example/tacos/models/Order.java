@@ -13,15 +13,16 @@ import java.util.List;
 
 @Data
 @Entity
-public class TacoOrder implements Serializable {
+@Table
+public class Order implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Date placedAt;
+    private Date placedAt = new Date();
 
     @NotBlank(message = "Name is required")
     private String deliveryName;
@@ -46,13 +47,14 @@ public class TacoOrder implements Serializable {
     private String ccExpiration;
 
     @Pattern(regexp = "^[0-9]{3,4}$", message = "Invalid CVV") // @Digits не проверяет на минимальное число цифр
+    @Column(name = "cc_cvv")
     private String ccCVV;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Taco> tacos = new ArrayList<>();
 
     @ManyToOne
-    private User user;
+    private Client client;
 
     public void addTaco(Taco taco) {
         this.tacos.add(taco);

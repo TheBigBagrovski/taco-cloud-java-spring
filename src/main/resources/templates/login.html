@@ -9,9 +9,9 @@
 <body>
 
 <h1>Login</h1>
-<img th:src="@{/images/logo.png}"/>
+<img th:src="@{/images/logo.jpg}"/>
 
-<div th:if="${error}">
+<div th:if="${param.error}" style="color: red">
   Wrong username or password
 </div>
 

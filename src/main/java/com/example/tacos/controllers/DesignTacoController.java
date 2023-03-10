@@ -3,8 +3,8 @@ package com.example.tacos.controllers;
 import com.example.tacos.data.IngredientRepository;
 import com.example.tacos.models.Ingredient;
 import com.example.tacos.models.Ingredient.Category;
+import com.example.tacos.models.Order;
 import com.example.tacos.models.Taco;
-import com.example.tacos.models.TacoOrder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @Slf4j // lombok, добавляет свойство Logger
 @Controller
 @RequestMapping("/design") // тип запросов, обрабатываемых контроллером (запросы пути который начинаются с /design)
-@SessionAttributes("tacoOrder") // объект tacoOrder должен поддерживаться на уровне сессии
+@SessionAttributes("order") // объект order должен поддерживаться на уровне сессии
 public class DesignTacoController {
 
     private final IngredientRepository ingredientRepo;
@@ -41,9 +41,9 @@ public class DesignTacoController {
         }
     }
 
-    @ModelAttribute(name = "tacoOrder")
-    public TacoOrder order() {
-        return new TacoOrder();
+    @ModelAttribute(name = "order")
+    public Order order() {
+        return new Order();
     }
 
     @ModelAttribute(name = "taco")
@@ -57,9 +57,9 @@ public class DesignTacoController {
     }
 
     @PostMapping // обработка post запросов с путем design
-    public String processTaco(@Valid Taco taco, Errors errors, @ModelAttribute TacoOrder tacoOrder) {
+    public String processTaco(@Valid Taco taco, Errors errors, @ModelAttribute Order order) {
         if (errors.hasErrors()) return "design";
-        tacoOrder.addTaco(taco);
+        order.addTaco(taco);
         log.info("Processing taco: {}", taco); // Logger
         return "redirect:/orders/current";
     }
