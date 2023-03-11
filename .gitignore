@@ -44,8 +44,6 @@ out/
 
 /bin
 
-*.iml
-
 /node_modules
 
 /packages
@@ -64,4 +62,6 @@ out/
 
 *.DS_Store
 
-Thumbs.db
+/Thumbs.db
+
+/application.yml
