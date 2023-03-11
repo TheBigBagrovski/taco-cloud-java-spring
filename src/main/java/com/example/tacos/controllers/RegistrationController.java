@@ -31,10 +31,15 @@ public class RegistrationController {
         return "registration";
     }
 
+    @ModelAttribute(name = "client")
+    public Client client() {
+        return new Client();
+    }
+
     @PostMapping
     public String processRegistration(@ModelAttribute("client") @Valid Client client, BindingResult bindingResult) {
         clientValidator.validate(client, bindingResult);
-        if(bindingResult.hasErrors()) return "registration";
+        if (bindingResult.hasErrors()) return "registration";
         registrationService.register(client);
         return "redirect:/login";
     }

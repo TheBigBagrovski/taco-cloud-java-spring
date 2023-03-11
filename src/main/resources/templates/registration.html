@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Registration</title>
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
 </head>
 <body>
 
@@ -12,34 +13,34 @@
 
 <img th:src="@{images/logo.jpg}"/>
 
-<form method="post" th:action="@{/register}" id="registerForm">
+<form method="post" th:action="@{/register}" id="registerForm" th:object="${client}">
 
     <label for="username">Username: </label>
-    <input type="text" name="username"/><br/>
+    <input type="text" name="username" th:field="*{username}"/><br/>
     <span class="validationError" style="color: red"
           th:if="${#fields.hasErrors('username')}"
           th:errors="*{username}">Username Error</span>
     <br>
 
     <label for="password">Password: </label>
-    <input type="password" name="password"/><br/>
+    <input type="password" name="password" th:field="*{password}"/><br/>
     <span class="validationError" style="color: red"
           th:if="${#fields.hasErrors('password')}"
           th:errors="*{password}">Password Error</span>
     <br>
 
     <label for="fullname">Full name: </label>
-    <input type="text" name="fullname"/><br/>
+    <input type="text" name="fullname" th:field="*{fullname}"/><br/>
     <span class="validationError" style="color: red"
           th:if="${#fields.hasErrors('fullname')}"
           th:errors="*{fullname}">Name Error</span>
     <br>
 
-    <label for="phone">Phone: </label>
-    <input type="text" name="phone"/><br/>
+    <label for="phoneNumber">Phone: </label>
+    <input type="text" name="phoneNumber" th:field="*{phoneNumber}"/><br/>
     <span class="validationError" style="color: red"
-          th:if="${#fields.hasErrors('phone')}"
-          th:errors="*{phone}">Phone Error</span>
+          th:if="${#fields.hasErrors('phoneNumber')}"
+          th:errors="*{phoneNumber}">Phone Error</span>
     <br>
 
     <input type="submit" value="Register"/>

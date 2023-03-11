@@ -5,6 +5,8 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -32,5 +34,12 @@ public class Client {
     private String phoneNumber;
 
     private String role;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<TacoOrder> tacoOrders = new ArrayList<>();
+
+    public void addTacoOrder(TacoOrder tacoOrder) {
+        this.tacoOrders.add(tacoOrder);
+    }
 
 }

@@ -2,6 +2,7 @@ package com.example.tacos.services;
 
 import com.example.tacos.data.ClientRepository;
 import com.example.tacos.models.Client;
+import com.example.tacos.models.TacoOrder;
 import com.example.tacos.security.ClientDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,16 +10,15 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
-public class ClientDetailsService implements UserDetailsService {
+public class ClientService implements UserDetailsService {
 
     private final ClientRepository clientRepository;
 
     @Autowired
-    public ClientDetailsService(ClientRepository clientRepository) {
+    public ClientService(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
     }
 
@@ -33,5 +33,8 @@ public class ClientDetailsService implements UserDetailsService {
         return clientRepository.findByUsername(username);
     }
 
+    public void processTacoOrder(TacoOrder tacoOrder, String username) {
+        findByUsername(username).get().addTacoOrder(tacoOrder);
+    }
 
 }

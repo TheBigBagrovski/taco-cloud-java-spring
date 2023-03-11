@@ -1,7 +1,6 @@
 package com.example.tacos.security;
 
 import com.example.tacos.models.Client;
-import org.apache.catalina.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

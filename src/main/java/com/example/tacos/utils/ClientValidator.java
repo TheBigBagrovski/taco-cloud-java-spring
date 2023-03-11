@@ -1,7 +1,7 @@
 package com.example.tacos.utils;
 
 import com.example.tacos.models.Client;
-import com.example.tacos.services.ClientDetailsService;
+import com.example.tacos.services.ClientService;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -10,10 +10,10 @@ import org.springframework.validation.Validator;
 @Component
 public class ClientValidator implements Validator {
 
-    private final ClientDetailsService clientDetailsService;
+    private final ClientService clientDetailsService;
 
-    public ClientValidator(ClientDetailsService clientDetailsService) {
-        this.clientDetailsService = clientDetailsService;
+    public ClientValidator(ClientService clientService) {
+        this.clientDetailsService = clientService;
     }
 
     @Override

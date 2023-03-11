@@ -3,6 +3,7 @@ package com.example.tacos.models;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
@@ -19,7 +20,7 @@ public class Taco {
 
     private Date createdAt = new Date();
 
-    @NotNull
+    @NotBlank
     @Size(min = 2, message = "At least 2 characters long")
     private String name;
 
@@ -27,9 +28,5 @@ public class Taco {
     @Size(min = 1, message = "At least 1 ingredient")
     @ManyToMany
     private List<Ingredient> ingredients;
-
-    public void addIngredient(Ingredient ingredient) {
-        this.ingredients.add(ingredient);
-    }
 
 }

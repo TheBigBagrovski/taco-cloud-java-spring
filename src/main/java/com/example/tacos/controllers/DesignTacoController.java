@@ -1,11 +1,11 @@
 package com.example.tacos.controllers;
 
-import com.example.tacos.data.IngredientRepository;
 import com.example.tacos.models.Ingredient;
 import com.example.tacos.models.Ingredient.Category;
-import com.example.tacos.models.Order;
 import com.example.tacos.models.Taco;
-import lombok.extern.slf4j.Slf4j;
+import com.example.tacos.models.TacoOrder;
+import com.example.tacos.services.IngredientService;
+import com.example.tacos.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,33 +17,34 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Slf4j // lombok, добавляет свойство Logger
 @Controller
 @RequestMapping("/design") // тип запросов, обрабатываемых контроллером (запросы пути который начинаются с /design)
-@SessionAttributes("order") // объект order должен поддерживаться на уровне сессии
+@SessionAttributes("tacoOrder") // объект order должен поддерживаться на уровне сессии
 public class DesignTacoController {
 
-    private final IngredientRepository ingredientRepo;
+    private final IngredientService ingredientService;
+    private final OrderService orderService;
 
     @Autowired
-    public DesignTacoController(IngredientRepository ingredientRepo) {
-        this.ingredientRepo = ingredientRepo;
+    public DesignTacoController(IngredientService ingredientService, OrderService orderService) {
+        this.ingredientService = ingredientService;
+        this.orderService = orderService;
     }
 
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
         Category[] categories = Category.values();
         List<Ingredient> ingredients = new ArrayList<>();
-        ingredientRepo.findAll().forEach(ingredients::add);
+        ingredientService.findAll().forEach(ingredients::add);
         for (Category category : categories) {
             model.addAttribute(category.toString().toLowerCase(),
                     ingredients.stream().filter(x -> x.getCategory().equals(category)).collect(Collectors.toList()));
         }
     }
 
-    @ModelAttribute(name = "order")
-    public Order order() {
-        return new Order();
+    @ModelAttribute(name = "tacoOrder")
+    public TacoOrder tacoOrder() {
+        return new TacoOrder();
     }
 
     @ModelAttribute(name = "taco")
@@ -57,10 +58,9 @@ public class DesignTacoController {
     }
 
     @PostMapping // обработка post запросов с путем design
-    public String processTaco(@Valid Taco taco, Errors errors, @ModelAttribute Order order) {
+    public String processTaco(@Valid Taco taco, Errors errors, @ModelAttribute("tacoOrder") TacoOrder tacoOrder) {
         if (errors.hasErrors()) return "design";
-        order.addTaco(taco);
-        log.info("Processing taco: {}", taco); // Logger
+        orderService.processTaco(tacoOrder, taco);
         return "redirect:/orders/current";
     }
 
