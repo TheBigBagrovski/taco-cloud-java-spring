@@ -1,0 +1,55 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+/* Header Styles */
+header {
+    background-color: #f9a602;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+header img {
+    width: 80px;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin: 0;
+    color: #fff;
+    text-shadow: 2px 2px #000;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #f9a602;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 50px 20px;
+}
+
+.logout-button {
+    font-size: 1.2rem;
+    background-color: #fff;
+    color: #f9a602;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.logout-button:hover {
+    background-color: #f9a602;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+a {
+    text-decoration: none;
+}

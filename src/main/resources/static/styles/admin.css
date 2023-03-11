@@ -1,0 +1,41 @@
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div[sec\:authorize="hasRole('ROLE_ADMIN')"] p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f9a602;
+}
+
+div[sec\:authorize="hasRole('ROLE_USER')"] p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4caf50;
+}
+
+a {
+    display: inline-block;
+    background-color: #f9a602;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: #ffbf5a;
+}
+
+footer {
+    background-color: #f9a602;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

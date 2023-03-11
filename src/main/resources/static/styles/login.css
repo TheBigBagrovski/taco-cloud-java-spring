@@ -1,0 +1,59 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    width: 320px;
+}
+
+#loginForm label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#loginForm input[type="text"],
+#loginForm input[type="password"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    width: 95%;
+    font-size: 16px;
+}
+
+#loginForm input[type="submit"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    width: 20%;
+}
+
+#loginForm input[type="submit"]:hover {
+    background-color: #555;
+}
+
+.validationError {
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

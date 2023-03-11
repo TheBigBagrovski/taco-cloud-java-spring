@@ -1,0 +1,67 @@
+/* Main Styles */
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Ingredient Group Styles */
+.ingredient-group {
+    margin-bottom: 30px;
+}
+
+.ingredient-group h3 {
+    margin-left: 10px;
+}
+
+.ingredient-group {
+    display: flex;
+    align-items: center;
+}
+
+.ingredient-group img {
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    float: right;
+    width: 200px;
+    height: 200px;
+}
+
+.ingredient-group input[type=checkbox] {
+    margin-left: 10px;
+}
+
+/* Form Styles */
+#designForm {
+    margin-top: 40px;
+}
+
+#designForm input[type=text] {
+    width: 40%;
+    height: 40px;
+    font-size: 1.2rem;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+#designForm button {
+    background-color: #f9a602;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#designForm button:hover {
+    background-color: #e69500;
+}
+
+/* Validation Error Styles */
+.validationError {
+    font-size: 1.2rem;
+    margin-left: 10px;
+}

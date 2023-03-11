@@ -1,24 +1,63 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Page</title>
-    <link rel="stylesheet" th:href="@{/styles.css}"/>
+    <title>Taco Cloud - Admin Page</title>
+    <link rel="stylesheet" th:href="@{/styles/styles.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/admin.css}"/>
 </head>
 <body>
-<img th:src="@{/images/logo.jpg}" alt="Logo">
-
-<div sec:authorize="hasRole('ROLE_ADMIN')">
-    You are admin
-</div>
-<div sec:authorize="hasRole('ROLE_USER')">
-    You are not admin
-</div>
-<br>
-<a th:href="@{/admin/delete-orders}">Clear orders</a>
-
+<header>
+    <a th:href="@{/}">
+        <img th:src="@{/images/logo.jpg}" alt="Logo">
+    </a>
+    <form method="POST" th:action="@{/logout}">
+        <button class="logout-button" type="submit">Logout</button>
+    </form>
+    <a class="logout-button" th:href="@{/login}">Login</a>
+    <a class="logout-button" th:href="@{/register}">Register</a>
+    <a class="logout-button" th:href="@{/admin}">Admin</a>
+    <a class="logout-button" th:href="@{/design}">Design</a>
+    <h1>Taco Cloud</h1>
+</header>
+<main>
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
+        <p>You are logged in as an admin.</p>
+    </div>
+    <div sec:authorize="hasRole('ROLE_USER')">
+        <p>You are logged in as a user.</p>
+    </div>
+    <br>
+    <a th:href="@{/admin/delete-orders}">Clear orders</a>
+</main>
+<footer>
+</footer>
 </body>
 </html>
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en"-->
+<!--      xmlns="http://www.w3.org/1999/xhtml"-->
+<!--      xmlns:th="http://www.thymeleaf.org"-->
+<!--      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Admin Page</title>-->
+<!--    <link rel="stylesheet" th:href="@{/styles.css}"/>-->
+<!--</head>-->
+<!--<body>-->
+<!--<img th:src="@{/images/logo.jpg}" alt="Logo">-->
+
+<!--<div sec:authorize="hasRole('ROLE_ADMIN')">-->
+<!--    You are admin-->
+<!--</div>-->
+<!--<div sec:authorize="hasRole('ROLE_USER')">-->
+<!--    You are not admin-->
+<!--</div>-->
+<!--<br>-->
+<!--<a th:href="@{/admin/delete-orders}">Clear orders</a>-->
+
+<!--</body>-->
+<!--</html>-->

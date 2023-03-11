@@ -3,33 +3,49 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Login</title>
-  <link rel="stylesheet" th:href="@{/styles.css}"/>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/styles/styles.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/login.css}"/>
 </head>
 <body>
+<header>
+    <a th:href="@{/}">
+        <img th:src="@{/images/logo.jpg}" alt="Logo">
+    </a>
+    <form method="POST" th:action="@{/logout}">
+        <button class="logout-button" type="submit">Logout</button>
+    </form>
+    <a class="logout-button" th:href="@{/login}">Login</a>
+    <a class="logout-button" th:href="@{/register}">Register</a>
+    <a class="logout-button" th:href="@{/admin}">Admin</a>
+    <a class="logout-button" th:href="@{/design}">Design</a>
+    <h1>Taco Cloud</h1>
+</header>
+<main>
+    <h1>Login</h1>
 
-<h1>Login</h1>
-<img th:src="@{/images/logo.jpg}"/>
+    <div th:if="${param.error}" style="color: red">
+        Wrong username or password
+    </div>
 
-<div th:if="${param.error}" style="color: red">
-  Wrong username or password
-</div>
+    <form method="post" th:action="@{/login}" id="loginForm">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+        <label for="username">Username: </label>
+        <input type="text" name="username" id="username">
+        <br>
+        <label for="password">Password: </label>
+        <input type="password" name="password" id="password">
+        <br>
+        <input type="submit" value="login">
+    </form>
 
-<p>New here? Click
-  <a th:href="@{/register}">here</a> to register
-</p>
+    <p>New here? Click
+        <a th:href="@{/register}">here</a> to register
+    </p>
+</main>
+<footer>
 
-<form method="post" th:action="@{/login}" id="loginForm">
-  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-  <label for="username">Username: </label>
-  <input type="text" name="username" id="username">
-  <br>
-  <label for="password">Password: </label>
-  <input type="password" name="password" id="password">
-  <br>
-  <input type="submit" value="login">
-</form>
-
+</footer>
 </body>
 </html>

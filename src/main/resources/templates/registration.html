@@ -5,14 +5,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Registration</title>
-    <link rel="stylesheet" th:href="@{/styles.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/styles.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/registration.css}"/>
 </head>
 <body>
-
+<header>
+    <a th:href="@{/}">
+        <img th:src="@{/images/logo.jpg}" alt="Logo">
+    </a>
+    <a class="logout-button" th:href="@{/login}">Login</a>
+    <a class="logout-button" th:href="@{/register}">Register</a>
+    <a class="logout-button" th:href="@{/admin}">Admin</a>
+    <a class="logout-button" th:href="@{/design}">Design</a>
+    <h1>Taco Cloud</h1>
+</header>
+<main>
 <h1>Register</h1>
-
-<img th:src="@{images/logo.jpg}"/>
-
 <form method="post" th:action="@{/register}" id="registerForm" th:object="${client}">
     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
     <label for="username">Username: </label>
@@ -46,6 +54,9 @@
     <input type="submit" value="Register"/>
 
 </form>
+</main>
+<footer>
 
+</footer>
 </body>
 </html>

@@ -4,14 +4,73 @@
 <head>
     <meta charset="UTF-8">
     <title>Taco cloud</title>
-    <link rel="stylesheet" th:href="@{/styles.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/home.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/styles.css}"/>
 </head>
 <body>
-<h1>Welcome to...</h1>
-<img th:src="@{/images/logo.jpg}" alt="logo"/>
-<br>
-<form method="POST" th:action="@{/logout}">
-    <input type="submit" value="Logout"/>
-</form>
+<header>
+    <a th:href="@{/}">
+        <img th:src="@{/images/logo.jpg}" alt="Logo">
+    </a>
+    <form method="POST" th:action="@{/logout}">
+        <button class="logout-button" type="submit">Logout</button>
+    </form>
+    <a class="logout-button" th:href="@{/login}">Login</a>
+    <a class="logout-button" th:href="@{/register}">Register</a>
+    <a class="logout-button" th:href="@{/admin}">Admin</a>
+    <a class="logout-button" th:href="@{/design}">Design</a>
+    <h1>Taco Cloud</h1>
+</header>
+<main>
+    <section id="welcome">
+        <h2>Welcome to Taco Cloud!</h2>
+        <p>We deliver authentic Mexican food right to your doorstep. Browse our menu and place your order today!</p>
+    </section>
+    <section id="about">
+        <h2>About Us</h2>
+        <p>At Taco Cloud, we believe that everyone deserves a taste of Mexico. That's why we source only the freshest
+            ingredients and cook each dish with care and precision. Our menu is packed with traditional favorites as
+            well as modern twists, so there's something for everyone to enjoy. </p>
+    </section>
+    <section id="menu">
+        <h2>Our Menu</h2>
+        <div class="menu-item">
+            <img th:src="@{/images/tacos.jpg}" alt="Tacos">
+            <h3>Tacos</h3>
+            <p>Corn tortillas filled with your choice of meat, topped with onions, cilantro, and a squeeze of lime.</p>
+        </div>
+        <div class="menu-item">
+            <img th:src="@{/images/quesadillas.jpg}" alt="Quesadillas">
+            <h3>Quesadillas</h3>
+            <p>Melted cheese between two flour tortillas, with your choice of filling.</p>
+        </div>
+        <div class="menu-item">
+            <img th:src="@{/images/burritos.jpg}" alt="Burritos">
+            <h3>Burritos</h3>
+            <p>A large flour tortilla filled with rice, beans, cheese, and your choice of meat or veggies.</p>
+        </div>
+    </section>
+    <section id="reviews">
+        <h2>What our customers are saying</h2>
+        <div class="review">
+            <h3>Juanita M.</h3>
+            <p>"The best tacos I've had outside of Mexico! The meat was so tender and the flavors were amazing. I'll
+                definitely be ordering again."</p>
+        </div>
+        <div class="review">
+            <h3>Roberto G.</h3>
+            <p>"The burritos were huge and packed with flavor. I couldn't even finish one! The delivery was fast and the
+                food was still hot when it arrived."</p>
+        </div>
+        <div class="review">
+            <h3>Samantha L.</h3>
+            <p>"I ordered the vegetarian quesadillas and they were delicious! The cheese was melted perfectly and the
+                veggies were fresh. I'll be recommending Taco Cloud to all my friends."</p>
+        </div>
+    </section>
+</main>
+<footer>
+
+</footer>
 </body>
 </html>
