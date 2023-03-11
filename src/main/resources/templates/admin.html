@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
+</head>
+<body>
+<img th:src="@{/images/logo.jpg}" alt="Logo">
+
+<div sec:authorize="hasRole('ROLE_ADMIN')">
+    You are admin
+</div>
+<div sec:authorize="hasRole('ROLE_USER')">
+    You are not admin
+</div>
+<br>
+<a th:href="@{/admin/delete-orders}">Clear orders</a>
+
+</body>
+</html>
