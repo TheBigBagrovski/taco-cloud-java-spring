@@ -14,3 +14,15 @@ spring:
     properties:
       hibernate:
         show_sql: true
+
+logging:
+  file:
+    path: /var/logs/
+    name: TacoCloud.log
+  level:
+    root: WARN
+    org.springframework.security: DEBUG
+
+taco:
+  orders:
+    pageSize: 1

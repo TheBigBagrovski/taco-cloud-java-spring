@@ -5,8 +5,6 @@ import com.example.tacos.models.Ingredient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class IngredientService {
 
@@ -15,10 +13,6 @@ public class IngredientService {
     @Autowired
     public IngredientService(IngredientRepository ingredientRepository) {
         this.ingredientRepository = ingredientRepository;
-    }
-
-    public Optional<Ingredient> findById(String id) {
-        return ingredientRepository.findById(id);
     }
 
     public Iterable<Ingredient> findAll() {

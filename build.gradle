@@ -24,6 +24,7 @@ dependencies {
 	runtimeOnly 'org.postgresql:postgresql'                                     // СУБД postgres
 	implementation 'org.springframework.boot:spring-boot-starter-security'// security
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5' // thymeleaf
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor" //@ConfigProp
 }
 
 tasks.named('test') {
