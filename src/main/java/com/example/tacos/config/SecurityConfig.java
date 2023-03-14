@@ -15,6 +15,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
+                .csrf().disable() // for postman
                 .authorizeRequests()
                 .antMatchers("/design", "/orders", "/admin").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/", "/**").permitAll()

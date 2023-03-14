@@ -25,6 +25,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'// security
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5' // thymeleaf
 	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor" //@ConfigProp
+	implementation 'org.springframework.boot:spring-boot-starter-data-rest'// REST API
 }
 
 tasks.named('test') {
